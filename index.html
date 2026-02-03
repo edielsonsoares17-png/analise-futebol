@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Análise de Futebol</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #fff;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .box {
+      background: #1e293b;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border-radius: 6px;
+      border: none;
+    }
+    button {
+      background: #22c55e;
+      font-weight: bold;
+    }
+    .resultado {
+      margin-top: 10px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>⚽ Analisador de Jogos</h1>
+
+<div class="box">
+  <label>Time da Casa</label>
+  <input id="casa" placeholder="Ex: Flamengo">
+
+  <label>Time Visitante</label>
+  <input id="fora" placeholder="Ex: Palmeiras">
+
+  <label>Média de gols (Casa)</label>
+  <input id="golsCasa" type="number">
+
+  <label>Média de gols (Fora)</label>
+  <input id="golsFora" type="number">
+
+  <button onclick="analisar()">Analisar Jogo</button>
+
+  <div class="resultado" id="resultado"></div>
+</div>
+
+<script>
+function analisar() {
+  const casa = document.getElementById("casa").value;
+  const fora = document.getElementById("fora").value;
+  const golsCasa = Number(document.getElementById("golsCasa").value);
+  const golsFora = Number(document.getElementById("golsFora").value);
+
+  let dica = "Jogo equilibrado ⚖️";
+
+  if (golsCasa > golsFora) dica = "Favorito: " + casa;
+  if (golsFora > golsCasa) dica = "Favorito: " + fora;
+
+  document.getElementById("resultado").innerHTML = dica;
+}
+</script>
+
+</body>
+</html>
